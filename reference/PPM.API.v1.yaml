@@ -1,0 +1,391 @@
+openapi: 3.0.0
+info:
+  title: PPM.API
+  version: '1.0'
+  contact:
+    name: Aaron Gatlin
+    url: 'http://atriaseniorliving.com'
+    email: aaron.gatlin@atriaseniorliving.com
+  termsOfService: 'http://termsofservice...'
+  description: Product Pricing Management API
+servers:
+  - url: 'https://stoplight.io/mocks/atriaseniorliving/ppm-api/7163676'
+paths:
+  '/v1/community/{communityNumber}/apartments':
+    parameters:
+      - $ref: '#/components/parameters/communityNumber'
+    get:
+      summary: '/v1/community/{communityNumber}/apartments'
+      tags:
+        - Apartment
+      responses:
+        '200':
+          $ref: '#/components/responses/Apartments'
+        '401':
+          description: Unauthorized
+      operationId: get-v1-community-communityId-apartment
+      description: Get community apartment data.
+      parameters: []
+      security: []
+  '/v1/community/{communityNumber}/apartments/{apartmentNumber}':
+    parameters:
+      - $ref: '#/components/parameters/communityNumber'
+      - $ref: '#/components/parameters/apartmentNumber'
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          $ref: '#/components/responses/Apartments'
+      operationId: get-v1-community-communityNumber-apartments-apr
+      security: []
+components:
+  schemas:
+    Apartment:
+      description: Community room information (alternate model)
+      type: object
+      x-examples:
+        Apartment Model Example:
+          apartmentNumber: '301'
+          isFeatured: true
+          rentalRate: $2000.00
+          respiteRate: $250.00
+          availabilityToMarket: 5
+          attributes:
+            - name: Floor Level
+              value: '3'
+              type: ''
+              sortOrder: 1
+            - name: Gross Unit Area
+              value: '500'
+              type: ''
+              sortOrder: 2
+            - name: Bedroom Count
+              value: '2'
+              type: ''
+              sortOrder: 3
+            - name: Bathroom Count
+              value: '2'
+              type: ''
+              sortOrder: 4
+            - name: Kitchen Type
+              value: Kitchenette
+              type: ''
+              sortOrder: 5
+            - name: Room View
+              value: Premium
+              type: ''
+              sortOrder: 6
+            - name: Closet Space
+              value: Standard
+              type: ''
+              sortOrder: 7
+            - name: Balcony Patio
+              value: string
+              type: ''
+              sortOrder: 8
+            - name: Washer Dryer
+              value: Stackable Units
+              type: ''
+              sortOrder: 9
+          digitalAssets:
+            floorPlans:
+              images:
+                - title: Image Title 1
+                  description: Clever marketing copy
+                  url: 'http://...'
+                  sortOrder: 1
+                  isFeatured: true
+                - title: Image Title 2
+                  description: Clever marketing copy
+                  url: 'http://...'
+                  sortOrder: 2
+                  isFeatured: true
+              videos:
+                - title: Video Title 1
+                  description: Clever marketing copy
+                  url: 'http://...'
+                  sortOrder: 1
+                  isFeatured: true
+                - title: Video Title 2
+                  description: Clever marketing copy
+                  url: 'http://...'
+                  sortOrder: 2
+                  isFeatured: true
+              documents:
+                - title: Floorpan Doc 1
+                  description: Clever marketing copy
+                  url: 'http://...'
+              virtualTours:
+                - title: Virtual Tour Title
+                  description: Clever marketing copy
+                  url: 'http://...'
+          marketingSpecifications:
+            - title: Security
+              description: Clever marketing copy
+              sortOrder: 1
+            - title: Kitchen
+              description: Clever marketing copy
+              sortOrder: 2
+            - title: Patio/Balcony
+              description: Clever marketing copy
+              sortOrder: 3
+            - title: Closets
+              description: Clever marketing copy
+              sortOrder: 4
+            - title: Housekeeping & Linen Services
+              description: Clever marketing copy
+              sortOrder: 5
+      properties:
+        apartmentNumber:
+          type: string
+          minLength: 1
+        isFeatured:
+          type: boolean
+        rentalRate:
+          type: string
+          minLength: 1
+        respiteRate:
+          type: string
+          minLength: 1
+        availabilityToMarket:
+          type: number
+        roomType:
+          type: string
+        careType:
+          type: string
+        attributes:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              value:
+                type: string
+              type:
+                type: string
+              sortOrder:
+                type: number
+        digitalAssets:
+          type: object
+          properties:
+            FloorPlans:
+              type: array
+              items:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  type:
+                    type: string
+                  images:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        isFeatured:
+                          type: number
+                        sortOrder:
+                          type: number
+                        url:
+                          type: string
+                  documents:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        sortOrder:
+                          type: number
+                        url:
+                          type: string
+                  virtualTours:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        title:
+                          type: string
+                        description:
+                          type: string
+                        sortOrder:
+                          type: number
+                        url:
+                          type: string
+        marketingSpecifications:
+          type: array
+          uniqueItems: true
+          minItems: 1
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+                minLength: 1
+              description:
+                type: string
+                minLength: 1
+              sortOrder:
+                type: number
+            required:
+              - title
+              - description
+      required:
+        - apartmentNumber
+        - isFeatured
+        - rentalRate
+        - respiteRate
+        - availabilityToMarket
+        - attributes
+        - digitalAssets
+        - marketingSpecifications
+  responses:
+    Apartments:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            description: ''
+            type: object
+            properties:
+              communityNumber:
+                type: number
+              apartments:
+                type: array
+                uniqueItems: true
+                minItems: 1
+                items:
+                  $ref: '#/components/schemas/Apartment'
+            required:
+              - communityNumber
+              - apartments
+          examples:
+            Apartments Response:
+              value:
+                communityNumber: 12305
+                apartments:
+                  - apartmentNumber: '301'
+                    isFeatured: true
+                    rentalRate: $2000.00
+                    respiteRate: $250.00
+                    availabilityToMarket: 5
+                    attributes:
+                      - name: Floor Level
+                        value: '3'
+                        type: ''
+                        sortOrder: 1
+                      - name: Gross Unit Area
+                        value: '500'
+                        type: ''
+                        sortOrder: 2
+                      - name: Bedroom Count
+                        value: '2'
+                        type: ''
+                        sortOrder: 3
+                      - name: Bathroom Count
+                        value: '2'
+                        type: ''
+                        sortOrder: 4
+                      - name: Kitchen Type
+                        value: Kitchenette
+                        type: ''
+                        sortOrder: 5
+                      - name: Room View
+                        value: Premium
+                        type: ''
+                        sortOrder: 6
+                      - name: Closet Space
+                        value: Standard
+                        type: ''
+                        sortOrder: 7
+                      - name: Balcony Patio
+                        value: string
+                        type: ''
+                        sortOrder: 8
+                      - name: Washer Dryer
+                        value: Stackable Units
+                        type: ''
+                        sortOrder: 9
+                    digitalAssets:
+                      floorPlans:
+                        images:
+                          - title: Image Title 1
+                            description: Clever marketing copy
+                            url: 'http://...'
+                            sortOrder: 1
+                            isFeatured: true
+                          - title: Image Title 2
+                            description: Clever marketing copy
+                            url: 'http://...'
+                            sortOrder: 2
+                            isFeatured: true
+                        videos:
+                          - title: Video Title 1
+                            description: Clever marketing copy
+                            url: 'http://...'
+                            sortOrder: 1
+                            isFeatured: true
+                          - title: Video Title 2
+                            description: Clever marketing copy
+                            url: 'http://...'
+                            sortOrder: 2
+                            isFeatured: true
+                        documents:
+                          - title: Floorpan Doc 1
+                            description: Clever marketing copy
+                            url: 'http://...'
+                        virtualTours:
+                          - title: Virtual Tour Title
+                            description: Clever marketing copy
+                            url: 'http://...'
+                    marketingSpecifications:
+                      - title: Security
+                        description: Clever marketing copy
+                        sortOrder: 1
+                      - title: Kitchen
+                        description: Clever marketing copy
+                        sortOrder: 2
+                      - title: Patio/Balcony
+                        description: Clever marketing copy
+                        sortOrder: 3
+                      - title: Closets
+                        description: Clever marketing copy
+                        sortOrder: 4
+                      - title: Housekeeping & Linen Services
+                        description: Clever marketing copy
+                        sortOrder: 5
+      headers:
+        header-0:
+          schema:
+            type: string
+  securitySchemes:
+    ApiKey:
+      name: x41s541c5s1c5s1cs5
+      type: apiKey
+      in: header
+  parameters:
+    communityNumber:
+      name: communityNumber
+      in: path
+      required: true
+      schema:
+        type: number
+    apartmentNumber:
+      name: apartmentNumber
+      in: path
+      required: true
+      schema:
+        type: number
+security:
+  - ApiKey: []
+tags:
+  - name: Apartment
+    description: Apartment grouping
