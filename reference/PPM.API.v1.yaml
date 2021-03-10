@@ -40,6 +40,19 @@ paths:
       operationId: get-v1-community-communityNumber-apartments-apr
       security: []
       description: Get community apartment data by apartment number
+  '/v1/community/{communityNumber}/apartments/{apartmentNumber}/marketingSpecifications':
+    parameters:
+      - $ref: '#/components/parameters/communityNumber'
+      - $ref: '#/components/parameters/apartmentNumber'
+    get:
+      summary: '/v1/community/{communityNumber}/apartments/{apartmentNumber}/marketingSpecifications'
+      tags: []
+      responses:
+        '200':
+          $ref: '#/components/responses/MarketingSpecifications'
+      operationId: get-v1-community-communityNumber-apartments-apartmentNumber-marketingSpecifications
+      security: []
+      description: Get marketing specifications by apartment
 components:
   schemas:
     Apartment:
@@ -248,6 +261,27 @@ components:
         - attributes
         - digitalAssets
         - marketingSpecifications
+    MarketingSpecification:
+      description: ''
+      type: object
+      properties:
+        title:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        sortOrder:
+          type: number
+      required:
+        - title
+        - description
+        - sortOrder
+      x-examples:
+        Marketing Specification:
+          title: string
+          description: string
+          sortOrder: 0
   responses:
     Apartments:
       description: Example response
@@ -367,11 +401,55 @@ components:
         header-0:
           schema:
             type: string
+    MarketingSpecifications:
+      description: Example response
+      content:
+        application/json:
+          schema:
+            description: ''
+            type: object
+            properties:
+              communityNumber:
+                type: number
+              apartmentNumber:
+                type: number
+              marketingSpecifications:
+                type: array
+                uniqueItems: true
+                minItems: 1
+                items:
+                  $ref: '#/components/schemas/MarketingSpecification'
+            required:
+              - communityNumber
+              - apartmentNumber
+              - marketingSpecifications
+          examples:
+            Marketing Specifications Response:
+              value:
+                communityNumber: 12305
+                apartmentNumber: 125
+                marketingSpecifications:
+                  - title: Security
+                    description: Clever marketing copy
+                    sortOrder: 1
+                  - title: Kitchen
+                    description: Clever marketing copy
+                    sortOrder: 2
+                  - title: Patio/Balcony
+                    description: Clever marketing copy
+                    sortOrder: 3
+                  - title: Closets
+                    description: Clever marketing copy
+                    sortOrder: 4
+                  - title: Housekeeping & Linen Services
+                    description: Clever marketing copy
+                    sortOrder: 5
   securitySchemes:
     ApiKey:
       name: x41s541c5s1c5s1cs5
       type: apiKey
       in: header
+      description: ''
   parameters:
     communityNumber:
       name: communityNumber
