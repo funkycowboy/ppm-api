@@ -33,7 +33,8 @@ paths:
       - $ref: '#/components/parameters/apartmentNumber'
     get:
       summary: '/v1/community/{communityNumber}/apartments/{apartmentNumber}'
-      tags: []
+      tags:
+        - Apartment
       responses:
         '200':
           $ref: '#/components/responses/Apartments'
@@ -46,13 +47,14 @@ paths:
       - $ref: '#/components/parameters/apartmentNumber'
     get:
       summary: '/v1/community/{communityNumber}/apartments/{apartmentNumber}/marketingSpecifications'
-      tags: []
       responses:
         '200':
           $ref: '#/components/responses/MarketingSpecifications'
       operationId: get-v1-community-communityNumber-apartments-apartmentNumber-marketingSpecifications
       security: []
       description: Get marketing specifications by apartment
+      tags:
+        - Marketing Specifications
 components:
   schemas:
     Apartment:
