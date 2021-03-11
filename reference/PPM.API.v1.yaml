@@ -21,8 +21,6 @@ paths:
       responses:
         '200':
           $ref: '#/components/responses/Apartments'
-        '401':
-          description: Unauthorized
       operationId: get-v1-community-communityId-apartment
       description: Get community apartment data.
       parameters: []
@@ -399,10 +397,7 @@ components:
                       - title: Housekeeping & Linen Services
                         description: Clever marketing copy
                         sortOrder: 5
-      headers:
-        header-0:
-          schema:
-            type: string
+      headers: {}
     MarketingSpecifications:
       description: Example response
       content:
@@ -459,12 +454,14 @@ components:
       required: true
       schema:
         type: number
+      description: The community number.
     apartmentNumber:
       name: apartmentNumber
       in: path
       required: true
       schema:
         type: number
+      description: The apartment number.
 security:
   - ApiKey: []
 tags:
