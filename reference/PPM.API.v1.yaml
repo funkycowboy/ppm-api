@@ -69,6 +69,7 @@ paths:
       tags:
         - Apartment
       security: []
+      description: Get community featured apartment data.
   '/v1/community/{communityNumber}/availableApartments':
     parameters:
       - schema:
@@ -84,7 +85,7 @@ paths:
         '200':
           $ref: '#/components/responses/Apartments'
       operationId: get-v1-community-communityNumber-availableApartments
-      description: ''
+      description: Get community apartment data by availability
       security: []
 components:
   schemas:
