@@ -78,7 +78,8 @@ paths:
         required: true
     get:
       summary: '/v1/community/{communityNumber}/availableApartments'
-      tags: []
+      tags:
+        - Apartment
       responses:
         '200':
           $ref: '#/components/responses/Apartments'
