@@ -53,6 +53,38 @@ paths:
       description: Get marketing specifications by apartment
       tags:
         - Marketing Specifications
+  '/v1/community/{communityNumber}/featuredApartments':
+    parameters:
+      - schema:
+          type: string
+        name: communityNumber
+        in: path
+        required: true
+    get:
+      summary: '/v1/community/{communityNumber}/featuredApartments'
+      responses:
+        '200':
+          $ref: '#/components/responses/Apartments'
+      operationId: get-v1-community-communityNumber-featuredApartments
+      tags:
+        - Apartment
+      security: []
+  '/v1/community/{communityNumber}/availableApartments':
+    parameters:
+      - schema:
+          type: string
+        name: communityNumber
+        in: path
+        required: true
+    get:
+      summary: '/v1/community/{communityNumber}/availableApartments'
+      tags: []
+      responses:
+        '200':
+          $ref: '#/components/responses/Apartments'
+      operationId: get-v1-community-communityNumber-availableApartments
+      description: ''
+      security: []
 components:
   schemas:
     Apartment:
