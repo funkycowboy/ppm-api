@@ -25,6 +25,25 @@ paths:
       description: Get community apartment data.
       parameters: []
       security: []
+  '/v1/community/{communityNumber}/apartments-asl':
+    parameters:
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+    get:
+      summary: '/v1/community/{communityNumber}/apartments-asl'
+      tags:
+        - Apartment
+      responses:
+        '200':
+          $ref: '#/components/responses/Apartments'
+      operationId: get-v1-community-communityId-apartment
+      description: Get community apartment data.
+      parameters: []
+      security: []
   '/v1/community/{communityNumber}/apartments/{apartmentNumber}':
     parameters:
       - $ref: '#/components/parameters/communityNumber'
