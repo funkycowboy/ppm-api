@@ -11,6 +11,27 @@ info:
 servers:
   - url: 'https://stoplight.io/mocks/atriaseniorliving/ppm-api/7163676'
 paths:
+  'ASL2/v1/community/{communityNumber}/pricing':
+    parameters:
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+    get:
+      summary: 'ASL2/v1/community/{communityNumber}/pricing'
+      tags:
+        - Apartment
+      responses:
+        '200':
+          $ref: '#/components/responses/Apartments'
+        '201':
+          description: Created
+      operationId: get-v1-community-communityId-apartment
+      description: Get community apartment data.
+      parameters: []
+      security: []
   '/v1/community/{communityNumber}/apartments':
     parameters:
       - $ref: '#/components/parameters/communityNumber'
