@@ -11,7 +11,7 @@ info:
 servers:
   - url: 'https://stoplight.io/mocks/atriaseniorliving/ppm-api/7163676'
 paths:
-  'ASL2/v1/community/{communityNumber}':
+  '/ASL2/v1/community/{communityNumber}':
     parameters:
       - name: communityNumber
         in: path
@@ -680,7 +680,7 @@ paths:
       description: Get community apartment data.
       parameters: []
       security: []
-  'ASL2/v1/community/{communityNumber}/pricing':
+  '/ASL2/v1/community/{communityNumber}/pricing':
     parameters:
       - name: communityNumber
         in: path
@@ -936,7 +936,7 @@ paths:
       description: Get community apartment data.
       parameters: []
       security: []
-  'ASL2/v1/community/{communityNumber}/features':
+  '/ASL2/v1/community/{communityNumber}/features':
     parameters:
       - name: communityNumber
         in: path
@@ -1055,7 +1055,7 @@ paths:
       description: Get community apartment data.
       parameters: []
       security: []
-  'ASL2/v1/community/{communityNumber}/amenities':
+  '/ASL2/v1/community/{communityNumber}/amenities':
     parameters:
       - name: communityNumber
         in: path
@@ -1173,7 +1173,7 @@ paths:
       description: Get community apartment data.
       parameters: []
       security: []
-  'ASL2/v1/community/{communityNumber}/services':
+  '/ASL2/v1/community/{communityNumber}/services':
     parameters:
       - name: communityNumber
         in: path
@@ -1291,7 +1291,7 @@ paths:
       description: Get community apartment data.
       parameters: []
       security: []
-  'ASL2/v1/community/{communityNumber}/digitalassets':
+  '/ASL2/v1/community/{communityNumber}/digitalassets':
     parameters:
       - name: communityNumber
         in: path
