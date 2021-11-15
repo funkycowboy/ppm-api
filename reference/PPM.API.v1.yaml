@@ -1478,8 +1478,6 @@ paths:
         description: The community number.
     get:
       summary: 'Coterie/v1/community/{communityNumber}/apartments'
-      tags:
-        - Apartment
       responses:
         '200':
           $ref: '#/components/responses/Apartments'
@@ -1487,6 +1485,8 @@ paths:
       description: Get community apartment data.
       parameters: []
       security: []
+      tags:
+        - Coterie
   '/Coterie//v1/community/{communityNumber}/apartments/{apartmentNumber}':
     parameters:
       - name: communityNumber
@@ -1503,14 +1503,14 @@ paths:
         description: The apartment number.
     get:
       summary: 'Coterie/v1/community/{communityNumber}/apartments/{apartmentNumber}'
-      tags:
-        - Apartment
       responses:
         '200':
           $ref: '#/components/responses/Apartments'
       operationId: get-v1-community-communityNumber-apartments-apr
       security: []
       description: Get community apartment data by apartment number
+      tags:
+        - Coterie
   '/Coterie//v1/community/{communityNumber}/apartments/{apartmentNumber}/marketingSpecifications':
     parameters:
       - name: communityNumber
@@ -1534,7 +1534,7 @@ paths:
       security: []
       description: Get marketing specifications by apartment
       tags:
-        - Marketing Specifications
+        - Coterie
 components:
   schemas:
     Apartment:
