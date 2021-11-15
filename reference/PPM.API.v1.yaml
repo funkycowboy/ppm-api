@@ -11,6 +11,675 @@ info:
 servers:
   - url: 'https://stoplight.io/mocks/atriaseniorliving/ppm-api/7163676'
 paths:
+  'ASL2/v1/community/{communityNumber}':
+    parameters:
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+    get:
+      summary: 'ASL2/v1/community/{communityNumber}'
+      tags:
+        - Apartment
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  communityStartingAtPrice:
+                    type: string
+                    minLength: 1
+                  digitalAssets:
+                    type: object
+                    properties:
+                      image:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - name
+                            - caption
+                            - altText
+                          properties:
+                            name:
+                              type: string
+                              minLength: 1
+                            caption:
+                              type: string
+                              minLength: 1
+                            altText:
+                              type: string
+                              minLength: 1
+                            urls:
+                              type: object
+                              properties:
+                                thumbnail:
+                                  type: string
+                                  minLength: 1
+                                16x9:
+                                  type: string
+                                  minLength: 1
+                                4x3:
+                                  type: string
+                                  minLength: 1
+                                small:
+                                  type: string
+                                  minLength: 1
+                                large:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - thumbnail
+                                - 16x9
+                                - 4x3
+                                - small
+                                - large
+                    required:
+                      - image
+                  features:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                          minLength: 1
+                  services:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                          minLength: 1
+                  amenities:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                          minLength: 1
+                  pricing:
+                    type: object
+                    properties:
+                      careTypes:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - careType
+                          properties:
+                            careType:
+                              type: string
+                              minLength: 1
+                            roomTypes:
+                              type: array
+                              uniqueItems: true
+                              minItems: 1
+                              items:
+                                required:
+                                  - roomType
+                                  - unitSquareFootageRange
+                                  - vacantRoomCount
+                                  - floorPlanURL
+                                properties:
+                                  roomType:
+                                    type: string
+                                    minLength: 1
+                                  unitSquareFootageRange:
+                                    type: string
+                                    minLength: 1
+                                  pricing:
+                                    type: object
+                                    properties:
+                                      rentalRate:
+                                        type: string
+                                        minLength: 1
+                                      respiteRate:
+                                        type: string
+                                        minLength: 1
+                                      startingAtPrice:
+                                        type: string
+                                        minLength: 1
+                                    required:
+                                      - rentalRate
+                                      - respiteRate
+                                      - startingAtPrice
+                                  vacantRoomCount:
+                                    type: string
+                                    minLength: 1
+                                  floorPlanURL:
+                                    type: string
+                                    minLength: 1
+                    required:
+                      - careTypes
+                required:
+                  - communityNumber
+                  - communityStartingAtPrice
+                  - digitalAssets
+                  - features
+                  - services
+                  - amenities
+                  - pricing
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    communityStartingAtPrice: '7595.00'
+                    digitalAssets:
+                      image:
+                        - name: tets
+                          caption: Lorem ipsum dolor sit am
+                          altText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+                          urls:
+                            thumbnail: 'https://via.placeholder.com/thumb.png'
+                            16x9: 'https://via.placeholder.com/16x9.png'
+                            4x3: 'https://via.placeholder.com/4x3.png'
+                            small: 'https://via.placeholder.com/small.png'
+                            large: 'https://via.placeholder.com/large.png'
+                    features:
+                      - id: electronicKeyEntry
+                        label: Electronic Key Entry
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: microwave
+                        label: Microwave
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: refrigerator
+                        label: Refrigerator
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: cableTV
+                        label: Cable TV
+                        iconUrl: 'http://theiconurl/sample.svg'
+                    services:
+                      - id: 24Staff
+                        label: 24-Hour Staff
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: conciergeService
+                        label: Concierge Service
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: emergencyAlertSystem
+                        label: Emergency Alert System
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: vegetarianMeals
+                        label: Vegetarian Meals
+                        iconUrl: 'http://theiconurl/sample.svg'
+                    amenities:
+                      - id: restaurantTableService
+                        label: Restaurant with Table Service
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: bistro
+                        label: Bistro
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: pub
+                        label: Pub
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: indoorSwimmingPool
+                        label: Indoor Swimming Pool
+                        iconUrl: 'http://theiconurl/sample.svg'
+                    pricing:
+                      careTypes:
+                        - careType: Assisted Living
+                          roomTypes:
+                            - roomType: Studio
+                              unitSquareFootageRange: 420-505
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '50'
+                              floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                            - roomType: One Bedroom
+                              unitSquareFootageRnage: 595-820
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '62'
+                              floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                            - roomType: Two Bedroom
+                              unitSquareFootageRange: 950-1095
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '19'
+                              floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                        - careType: Memory Care
+                          roomTypes:
+                            - roomType: Studio
+                              unitSquareFootageRange: '400'
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '6'
+                              floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                            - roomType: Shared Suite
+                              unitSquareFootageRange: 544-801
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '8'
+                              floorPlanURL: 'http://floorplanurl.com/one-bedroom/shared-suite/20810'
+              examples:
+                example-1:
+                  value:
+                    communityNumber: '10844'
+                    digitalAssets:
+                      image:
+                        - name: tets
+                          caption: Lorem ipsum dolor sit am
+                          altText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+                          urls:
+                            thumbnail: 'https://via.placeholder.com/thumb.png'
+                            16x9: 'https://via.placeholder.com/16x9.png'
+                            4x3: 'https://via.placeholder.com/4x3.png'
+                            small: 'https://via.placeholder.com/small.png'
+                            large: 'https://via.placeholder.com/large.png'
+                    features:
+                      - id: electronicKeyEntry
+                        label: Electronic Key Entry
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: microwave
+                        label: Microwave
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: refrigerator
+                        label: Refrigerator
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: cableTV
+                        label: Cable TV
+                        iconUrl: 'http://theiconurl/sample.svg'
+                    services:
+                      - id: 24Staff
+                        label: 24-Hour Staff
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: conciergeService
+                        label: Concierge Service
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: emergencyAlertSystem
+                        label: Emergency Alert System
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: vegetarianMeals
+                        label: Vegetarian Meals
+                        iconUrl: 'http://theiconurl/sample.svg'
+                    amenities:
+                      - id: restaurantTableService
+                        label: Restaurant with Table Service
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: bistro
+                        label: Bistro
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: pub
+                        label: Pub
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: indoorSwimmingPool
+                        label: Indoor Swimming Pool
+                        iconUrl: 'http://theiconurl/sample.svg'
+                    pricing:
+                      communityStartingAtPrice: '7595.00'
+                      careTypes:
+                        - careType: Assisted Living
+                          roomTypes:
+                            - roomType: Studio
+                              unitSquareFootageRange: 420-505
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '50'
+                              floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                            - roomType: One Bedroom
+                              unitSquareFootageRnage: 595-820
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '62'
+                              floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                            - roomType: Two Bedroom
+                              unitSquareFootageRange: 950-1095
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '19'
+                              floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                        - careType: Memory Care
+                          roomTypes:
+                            - roomType: Studio
+                              unitSquareFootageRange: '400'
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '6'
+                              floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                            - roomType: Shared Suite
+                              unitSquareFootageRange: 544-801
+                              pricing:
+                                rentalRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '8'
+                              floorPlanURL: 'http://floorplanurl.com/one-bedroom/shared-suite/20810'
+        '':
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  communityStartingAtPrice:
+                    type: string
+                    minLength: 1
+                  digitalAssets:
+                    type: object
+                    properties:
+                      image:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - name
+                            - caption
+                            - altText
+                          properties:
+                            name:
+                              type: string
+                              minLength: 1
+                            caption:
+                              type: string
+                              minLength: 1
+                            altText:
+                              type: string
+                              minLength: 1
+                            urls:
+                              type: object
+                              properties:
+                                thumbnail:
+                                  type: string
+                                  minLength: 1
+                                16x9:
+                                  type: string
+                                  minLength: 1
+                                4x3:
+                                  type: string
+                                  minLength: 1
+                                small:
+                                  type: string
+                                  minLength: 1
+                                large:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - thumbnail
+                                - 16x9
+                                - 4x3
+                                - small
+                                - large
+                    required:
+                      - image
+                  features:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                      properties:
+                        id:
+                          type: string
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                  services:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                      properties:
+                        id:
+                          type: string
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                  amenities:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                      properties:
+                        id:
+                          type: string
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                  careTypes:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - careType
+                      properties:
+                        careType:
+                          type: string
+                          minLength: 1
+                        roomTypes:
+                          type: array
+                          uniqueItems: true
+                          minItems: 1
+                          items:
+                            required:
+                              - roomType
+                              - unitSquareFootageRange
+                              - vacantRoomCount
+                              - floorPlanURL
+                            properties:
+                              roomType:
+                                type: string
+                                minLength: 1
+                              unitSquareFootageRange:
+                                type: string
+                                minLength: 1
+                              pricing:
+                                type: object
+                                properties:
+                                  rentalRate:
+                                    type: string
+                                    minLength: 1
+                                  respiteRate:
+                                    type: string
+                                    minLength: 1
+                                  startingAtPrice:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                  - rentalRate
+                                  - respiteRate
+                                  - startingAtPrice
+                              vacantRoomCount:
+                                type: string
+                                minLength: 1
+                              floorPlanURL:
+                                type: string
+                                minLength: 1
+                required:
+                  - communityNumber
+                  - communityStartingAtPrice
+                  - digitalAssets
+                  - features
+                  - services
+                  - amenities
+                  - careTypes
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    communityStartingAtPrice: '7595.00'
+                    digitalAssets:
+                      image:
+                        - name: tets
+                          caption: Lorem ipsum dolor sit am
+                          altText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+                          urls:
+                            thumbnail: 'https://via.placeholder.com/thumb.png'
+                            16x9: 'https://via.placeholder.com/16x9'
+                            4x3: 'https://via.placeholder.com/4x3'
+                            small: 'https://via.placeholder.com/small'
+                            large: 'https://via.placeholder.com/large'
+                    features:
+                      - id: ''
+                        label: Electronic Key Entry
+                        iconUrl: ''
+                      - id: ''
+                        label: Microwave
+                        iconUrl: ''
+                      - id: ''
+                        label: Refrigerator
+                        iconUrl: ''
+                      - id: ''
+                        label: Cable TV
+                        iconUrl: ''
+                    services:
+                      - id: ''
+                        label: 24-Hour Staff
+                        iconUrl: ''
+                      - id: ''
+                        label: Concierge Service
+                        iconUrl: ''
+                      - id: ''
+                        label: Emergency Alert System
+                        iconUrl: ''
+                      - id: ''
+                        label: Vegetarian Meals
+                        iconUrl: ''
+                    amenities:
+                      - id: ''
+                        label: Restaurant with Table Service
+                        iconUrl: ''
+                      - id: ''
+                        label: Bistro
+                        iconUrl: ''
+                      - id: ''
+                        label: Pub
+                        iconUrl: ''
+                      - id: ''
+                        label: Indoor Swimming Pool
+                        iconUrl: ''
+                    careTypes:
+                      - careType: Assisted Living
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              rentalRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRnage: 595-820
+                            pricing:
+                              rentalRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              rentalRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Memory Care
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: '400'
+                            pricing:
+                              rentalRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '6'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: Shared Suite
+                            unitSquareFootageRange: 544-801
+                            pricing:
+                              rentalRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '8'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/shared-suite/20810'
+      operationId: get-v1-community-communityId-apartment
+      description: Get community apartment data.
+      parameters: []
+      security: []
   'ASL2/v1/community/{communityNumber}/pricing':
     parameters:
       - name: communityNumber
@@ -24,29 +693,250 @@ paths:
       tags:
         - Apartment
       responses:
-        '200':
-          $ref: '#/components/responses/Apartments'
         '201':
           description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  communityStartingAtPrice:
+                    type: string
+                    minLength: 1
+                  careTypes:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - careType
+                      properties:
+                        careType:
+                          type: string
+                          minLength: 1
+                        roomTypes:
+                          type: array
+                          uniqueItems: true
+                          minItems: 1
+                          items:
+                            required:
+                              - roomType
+                              - unitSquareFootageRange
+                              - vacantRoomCount
+                              - floorPlanURL
+                            properties:
+                              roomType:
+                                type: string
+                                minLength: 1
+                              unitSquareFootageRange:
+                                type: string
+                                minLength: 1
+                              pricing:
+                                type: object
+                                properties:
+                                  singlePrivateRate:
+                                    type: string
+                                    minLength: 1
+                                  semiPrivateRate:
+                                    type: string
+                                    minLength: 1
+                                  respiteRate:
+                                    type: string
+                                    minLength: 1
+                                  startingAtPrice:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                  - singlePrivateRate
+                                  - semiPrivateRate
+                                  - respiteRate
+                                  - startingAtPrice
+                              vacantRoomCount:
+                                type: string
+                                minLength: 1
+                              floorPlanURL:
+                                type: string
+                                minLength: 1
+                required:
+                  - communityNumber
+                  - communityStartingAtPrice
+                  - careTypes
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    communityStartingAtPrice: '7595.00'
+                    careTypes:
+                      - careType: Independent Living
+                        roomTypes:
+                          - roomType: Studio Deluxe
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRnage: 595-820
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Assisted Living
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRange: 595-820
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Memory Care
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: '400'
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '6'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: Shared Suite
+                            unitSquareFootageRange: 544-801
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '8'
+                            floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
+              examples:
+                example-1:
+                  value:
+                    communityNumber: '10844'
+                    communityStartingAtPrice: '7595.00'
+                    careTypes:
+                      - careType: Independent Living
+                        roomTypes:
+                          - roomType: Studio Deluxe
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRnage: 595-820
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Assisted Living
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRange: 595-820
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Memory Care
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: '400'
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '6'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: Shared Suite
+                            unitSquareFootageRange: 544-801
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '8'
+                            floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
       operationId: get-v1-community-communityId-apartment
       description: Get community apartment data.
       parameters: []
       security: []
-  '/v1/community/{communityNumber}/apartments':
-    parameters:
-      - $ref: '#/components/parameters/communityNumber'
-    get:
-      summary: '/v1/community/{communityNumber}/apartments'
-      tags:
-        - Apartment
-      responses:
-        '200':
-          $ref: '#/components/responses/Apartments'
-      operationId: get-v1-community-communityId-apartment
-      description: Get community apartment data.
-      parameters: []
-      security: []
-  '/v1/community/{communityNumber}/apartments-asl':
+  'ASL2/v1/community/{communityNumber}/features':
     parameters:
       - name: communityNumber
         in: path
@@ -55,7 +945,539 @@ paths:
           type: number
         description: The community number.
     get:
-      summary: '/v1/community/{communityNumber}/apartments-asl'
+      summary: 'ASL2/v1/community/{communityNumber}/features'
+      tags:
+        - Apartment
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    services:
+                      - id: 24staff
+                        label: 24-Hour Staff
+                      - id: conciergeService
+                        label: Concierge Service
+                      - id: emergencyAlertSystem
+                        label: Emergency Alert System
+                      - id: '???'
+                        label: Vegetarian Meals
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  services:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                      required:
+                        - id
+                        - label
+                required:
+                  - communityNumber
+                  - services
+              examples:
+                example-1:
+                  value:
+                    communityNumber: '10844'
+                    features:
+                      - id: electronicKeyEntry
+                        label: Electronic Key Entry
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: microwave
+                        label: Microwave
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: refrigerator
+                        label: Refrigerator
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: cableTV
+                        label: Cable TV
+                        iconUrl: 'http://theiconurl/sample.svg'
+        '':
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    services:
+                      - id: 24staff
+                        label: 24-Hour Staff
+                      - id: conciergeService
+                        label: Concierge Service
+                      - id: emergencyAlertSystem
+                        label: Emergency Alert System
+                      - id: '???'
+                        label: Vegetarian Meals
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  features:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                      required:
+                        - id
+                        - label
+                required:
+                  - communityNumber
+                  - features
+      operationId: get-v1-community-communityId-apartment
+      description: Get community apartment data.
+      parameters: []
+      security: []
+  'ASL2/v1/community/{communityNumber}/amenities':
+    parameters:
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+    get:
+      summary: 'ASL2/v1/community/{communityNumber}/amenities'
+      tags:
+        - Apartment
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    ammenities:
+                      - id: '???'
+                        label: Restaurant with Table Service
+                      - id: '???'
+                        label: Bistro
+                      - id: '???'
+                        label: Pub
+                      - id: '???'
+                        label: Indoor Swimming Pool
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  ammenities:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                      required:
+                        - id
+                        - label
+                required:
+                  - communityNumber
+                  - ammenities
+              examples:
+                example-1:
+                  value:
+                    communityNumber: '10844'
+                    amenities:
+                      - id: restaurantTableService
+                        label: Restaurant with Table Service
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: bistro
+                        label: Bistro
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: pub
+                        label: Pub
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: indoorSwimmingPool
+                        label: Indoor Swimming Pool
+                        iconUrl: 'http://theiconurl/sample.svg'
+        '':
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  amenities:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - label
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                required:
+                  - communityNumber
+                  - amenities
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    amenities:
+                      - id: '???'
+                        label: Restaurant with Table Service
+                      - id: '???'
+                        label: Bistro
+                      - id: '???'
+                        label: Pub
+                      - id: '???'
+                        label: Indoor Swimming Pool
+      operationId: get-v1-community-communityId-apartment
+      description: Get community apartment data.
+      parameters: []
+      security: []
+  'ASL2/v1/community/{communityNumber}/services':
+    parameters:
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+    get:
+      summary: 'ASL2/v1/community/{communityNumber}/services'
+      tags:
+        - Apartment
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    services:
+                      - id: 24staff
+                        label: 24-Hour Staff
+                      - id: conciergeService
+                        label: Concierge Service
+                      - id: emergencyAlertSystem
+                        label: Emergency Alert System
+                      - id: '???'
+                        label: Vegetarian Meals
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  services:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                      required:
+                        - id
+                        - label
+                required:
+                  - communityNumber
+                  - services
+              examples:
+                example-1:
+                  value:
+                    communityNumber: '10844'
+                    services:
+                      - id: 24Staff
+                        label: 24-Hour Staff
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: conciergeService
+                        label: Concierge Service
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: emergencyAlertSystem
+                        label: Emergency Alert System
+                        iconUrl: 'http://theiconurl/sample.svg'
+                      - id: vegetarianMeals
+                        label: Vegetarian Meals
+                        iconUrl: 'http://theiconurl/sample.svg'
+        '':
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  services:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - id
+                        - label
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                required:
+                  - communityNumber
+                  - services
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    services:
+                      - id: 24staff
+                        label: 24-Hour Staff
+                      - id: conciergeService
+                        label: Concierge Service
+                      - id: emergencyAlertSystem
+                        label: Emergency Alert System
+                      - id: '???'
+                        label: Vegetarian Meals
+      operationId: get-v1-community-communityId-apartment
+      description: Get community apartment data.
+      parameters: []
+      security: []
+  'ASL2/v1/community/{communityNumber}/digitalassets':
+    parameters:
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+    get:
+      summary: 'ASL2/v1/community/{communityNumber}/digitalassets'
+      tags:
+        - Apartment
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  digitalAssets:
+                    type: object
+                    properties:
+                      image:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          required:
+                            - caption
+                            - altText
+                          properties:
+                            caption:
+                              type: string
+                              minLength: 1
+                            altText:
+                              type: string
+                              minLength: 1
+                            urls:
+                              type: object
+                              properties:
+                                thumbnail:
+                                  type: string
+                                  minLength: 1
+                                16x9:
+                                  type: string
+                                  minLength: 1
+                                4x3:
+                                  type: string
+                                  minLength: 1
+                                small:
+                                  type: string
+                                  minLength: 1
+                                large:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - thumbnail
+                                - 16x9
+                                - 4x3
+                                - small
+                                - large
+                    required:
+                      - image
+                required:
+                  - communityNumber
+                  - digitalAssets
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    digitalAssets:
+                      image:
+                        - caption: Lorem ipsum dolor sit am
+                          altText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+                          urls:
+                            thumbnail: 'https://via.placeholder.com/thumb.png'
+                            16x9: 'https://via.placeholder.com/16x9'
+                            4x3: 'https://via.placeholder.com/4x3'
+                            small: 'https://via.placeholder.com/small'
+                            large: 'https://via.placeholder.com/large'
+              examples:
+                example-1:
+                  value:
+                    communityNumber: string
+                    digitalAssets:
+                      images:
+                        - name: tets
+                          caption: Lorem ipsum dolor sit am
+                          altText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+                          urls:
+                            thumbnail: 'https://via.placeholder.com/thumb.png'
+                            16x9: 'https://via.placeholder.com/16x9.png'
+                            4x3: 'https://via.placeholder.com/4x3.png'
+                            small: 'https://via.placeholder.com/small.png'
+                            large: 'https://via.placeholder.com/large.png'
+        '':
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    digitalAssets:
+                      image:
+                        - caption: Lorem ipsum dolor sit am
+                          altText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
+                          urls:
+                            thumbnail: 'https://via.placeholder.com/thumb.png'
+                            16x9: 'https://via.placeholder.com/16x9'
+                            4x3: 'https://via.placeholder.com/4x3'
+                            small: 'https://via.placeholder.com/small'
+                            large: 'https://via.placeholder.com/large'
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  digitalAssets:
+                    type: object
+                    required:
+                      - image
+                    properties:
+                      image:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                            caption:
+                              type: string
+                              minLength: 1
+                            altText:
+                              type: string
+                              minLength: 1
+                            urls:
+                              type: object
+                              properties:
+                                thumbnail:
+                                  type: string
+                                  minLength: 1
+                                16x9:
+                                  type: string
+                                  minLength: 1
+                                4x3:
+                                  type: string
+                                  minLength: 1
+                                small:
+                                  type: string
+                                  minLength: 1
+                                large:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - thumbnail
+                                - 16x9
+                                - 4x3
+                                - small
+                                - large
+                          required:
+                            - caption
+                            - altText
+                required:
+                  - communityNumber
+                  - digitalAssets
+          description: ''
+      operationId: get-v1-community-communityId-apartment
+      description: Get community apartment data.
+      parameters: []
+      security: []
+  '/Coterie//v1/community/{communityNumber}/apartments':
+    parameters:
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+    get:
+      summary: 'Coterie/v1/community/{communityNumber}/apartments'
       tags:
         - Apartment
       responses:
@@ -65,12 +1487,22 @@ paths:
       description: Get community apartment data.
       parameters: []
       security: []
-  '/v1/community/{communityNumber}/apartments/{apartmentNumber}':
+  '/Coterie//v1/community/{communityNumber}/apartments/{apartmentNumber}':
     parameters:
-      - $ref: '#/components/parameters/communityNumber'
-      - $ref: '#/components/parameters/apartmentNumber'
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+      - name: apartmentNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The apartment number.
     get:
-      summary: '/v1/community/{communityNumber}/apartments/{apartmentNumber}'
+      summary: 'Coterie/v1/community/{communityNumber}/apartments/{apartmentNumber}'
       tags:
         - Apartment
       responses:
@@ -79,12 +1511,22 @@ paths:
       operationId: get-v1-community-communityNumber-apartments-apr
       security: []
       description: Get community apartment data by apartment number
-  '/v1/community/{communityNumber}/apartments/{apartmentNumber}/marketingSpecifications':
+  '/Coterie//v1/community/{communityNumber}/apartments/{apartmentNumber}/marketingSpecifications':
     parameters:
-      - $ref: '#/components/parameters/communityNumber'
-      - $ref: '#/components/parameters/apartmentNumber'
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+      - name: apartmentNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The apartment number.
     get:
-      summary: '/v1/community/{communityNumber}/apartments/{apartmentNumber}/marketingSpecifications'
+      summary: 'Coterie/v1/community/{communityNumber}/apartments/{apartmentNumber}/marketingSpecifications'
       responses:
         '200':
           $ref: '#/components/responses/MarketingSpecifications'
@@ -93,40 +1535,6 @@ paths:
       description: Get marketing specifications by apartment
       tags:
         - Marketing Specifications
-  '/v1/community/{communityNumber}/featuredApartments':
-    parameters:
-      - schema:
-          type: string
-        name: communityNumber
-        in: path
-        required: true
-    get:
-      summary: '/v1/community/{communityNumber}/featuredApartments'
-      responses:
-        '200':
-          $ref: '#/components/responses/Apartments'
-      operationId: get-v1-community-communityNumber-featuredApartments
-      tags:
-        - Apartment
-      security: []
-      description: Get community featured apartment data.
-  '/v1/community/{communityNumber}/availableApartments':
-    parameters:
-      - schema:
-          type: string
-        name: communityNumber
-        in: path
-        required: true
-    get:
-      summary: '/v1/community/{communityNumber}/availableApartments'
-      tags:
-        - Apartment
-      responses:
-        '200':
-          $ref: '#/components/responses/Apartments'
-      operationId: get-v1-community-communityNumber-availableApartments
-      description: Get community apartment data by availability
-      security: []
 components:
   schemas:
     Apartment:
