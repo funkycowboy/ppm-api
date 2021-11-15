@@ -629,6 +629,35 @@ paths:
                     pricing:
                       communityStartingAtPrice: '7595.00'
                       careTypes:
+                        - careType: Independent Living
+                          roomTypes:
+                            - roomType: Studio Deluxe
+                              unitSquareFootageRange: 420-505
+                              pricing:
+                                singlePrivateRate: '7595.00'
+                                semiPrivateRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '50'
+                              floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                            - roomType: One Bedroom
+                              unitSquareFootageRnage: 595-820
+                              pricing:
+                                singlePrivateRate: '7595.00'
+                                semiPrivateRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '62'
+                              floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                            - roomType: Two Bedroom
+                              unitSquareFootageRange: 950-1095
+                              pricing:
+                                singlePrivateRate: '7595.00'
+                                semiPrivateRate: '7595.00'
+                                respiteRate: '299.00'
+                                startingAtPrice: '7595.00'
+                              vacantRoomCount: '19'
+                              floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
                         - careType: Assisted Living
                           roomTypes:
                             - roomType: Studio
