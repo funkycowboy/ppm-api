@@ -11,6 +11,262 @@ info:
 servers:
   - url: 'https://stoplight.io/mocks/atriaseniorliving/ppm-api/7163676'
 paths:
+  '/ASL2/v1/community/{communityNumber}/pricing':
+    parameters:
+      - name: communityNumber
+        in: path
+        required: true
+        schema:
+          type: number
+        description: The community number.
+    get:
+      summary: 'ASL2/v1/community/{communityNumber}/pricing'
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  communityStartingAtPrice:
+                    type: string
+                    minLength: 1
+                  careTypes:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      required:
+                        - careType
+                      properties:
+                        careType:
+                          type: string
+                          minLength: 1
+                        roomTypes:
+                          type: array
+                          uniqueItems: true
+                          minItems: 1
+                          items:
+                            required:
+                              - roomType
+                              - unitSquareFootageRange
+                              - vacantRoomCount
+                              - floorPlanURL
+                            properties:
+                              roomType:
+                                type: string
+                                minLength: 1
+                              unitSquareFootageRange:
+                                type: string
+                                minLength: 1
+                              pricing:
+                                type: object
+                                properties:
+                                  singlePrivateRate:
+                                    type: string
+                                    minLength: 1
+                                  semiPrivateRate:
+                                    type: string
+                                    minLength: 1
+                                  respiteRate:
+                                    type: string
+                                    minLength: 1
+                                  startingAtPrice:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                  - singlePrivateRate
+                                  - semiPrivateRate
+                                  - respiteRate
+                                  - startingAtPrice
+                              vacantRoomCount:
+                                type: string
+                                minLength: 1
+                              floorPlanURL:
+                                type: string
+                                minLength: 1
+                required:
+                  - communityNumber
+                  - communityStartingAtPrice
+                  - careTypes
+                x-examples:
+                  example-1:
+                    communityNumber: '10844'
+                    communityStartingAtPrice: '7595.00'
+                    careTypes:
+                      - careType: Independent Living
+                        roomTypes:
+                          - roomType: Studio Deluxe
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRnage: 595-820
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Assisted Living
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRange: 595-820
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Memory Care
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: '400'
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '6'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: Shared Suite
+                            unitSquareFootageRange: 544-801
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '8'
+                            floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
+              examples:
+                example-1:
+                  value:
+                    communityNumber: '10844'
+                    communityStartingAtPrice: '7595.00'
+                    careTypes:
+                      - careType: Independent Living
+                        roomTypes:
+                          - roomType: Studio Deluxe
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRnage: 595-820
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Assisted Living
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: 420-505
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '50'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: One Bedroom
+                            unitSquareFootageRange: 595-820
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '62'
+                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
+                          - roomType: Two Bedroom
+                            unitSquareFootageRange: 950-1095
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '19'
+                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
+                      - careType: Memory Care
+                        roomTypes:
+                          - roomType: Studio
+                            unitSquareFootageRange: '400'
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '6'
+                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
+                          - roomType: Shared Suite
+                            unitSquareFootageRange: 544-801
+                            pricing:
+                              singlePrivateRate: '7595.00'
+                              semiPrivateRate: '7595.00'
+                              respiteRate: '299.00'
+                              startingAtPrice: '7595.00'
+                            vacantRoomCount: '8'
+                            floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
+      operationId: get-v1-community-communityId-apartment
+      description: Get community pricing by care type
+      parameters: []
+      security: []
+      tags:
+        - ASL 2.0
   '/ASL2/v1/community/{communityNumber}':
     parameters:
       - name: communityNumber
@@ -21,8 +277,6 @@ paths:
         description: The community number.
     get:
       summary: 'ASL2/v1/community/{communityNumber}'
-      tags:
-        - Apartment
       responses:
         '201':
           description: Created
@@ -677,265 +931,11 @@ paths:
                             vacantRoomCount: '8'
                             floorPlanURL: 'http://floorplanurl.com/one-bedroom/shared-suite/20810'
       operationId: get-v1-community-communityId-apartment
-      description: Get community apartment data.
+      description: 'Get community details (pricing, services, amenities, features and digital assets)'
       parameters: []
       security: []
-  '/ASL2/v1/community/{communityNumber}/pricing':
-    parameters:
-      - name: communityNumber
-        in: path
-        required: true
-        schema:
-          type: number
-        description: The community number.
-    get:
-      summary: 'ASL2/v1/community/{communityNumber}/pricing'
       tags:
-        - Apartment
-      responses:
-        '201':
-          description: Created
-          content:
-            application/json:
-              schema:
-                description: ''
-                type: object
-                properties:
-                  communityNumber:
-                    type: string
-                    minLength: 1
-                  communityStartingAtPrice:
-                    type: string
-                    minLength: 1
-                  careTypes:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - careType
-                      properties:
-                        careType:
-                          type: string
-                          minLength: 1
-                        roomTypes:
-                          type: array
-                          uniqueItems: true
-                          minItems: 1
-                          items:
-                            required:
-                              - roomType
-                              - unitSquareFootageRange
-                              - vacantRoomCount
-                              - floorPlanURL
-                            properties:
-                              roomType:
-                                type: string
-                                minLength: 1
-                              unitSquareFootageRange:
-                                type: string
-                                minLength: 1
-                              pricing:
-                                type: object
-                                properties:
-                                  singlePrivateRate:
-                                    type: string
-                                    minLength: 1
-                                  semiPrivateRate:
-                                    type: string
-                                    minLength: 1
-                                  respiteRate:
-                                    type: string
-                                    minLength: 1
-                                  startingAtPrice:
-                                    type: string
-                                    minLength: 1
-                                required:
-                                  - singlePrivateRate
-                                  - semiPrivateRate
-                                  - respiteRate
-                                  - startingAtPrice
-                              vacantRoomCount:
-                                type: string
-                                minLength: 1
-                              floorPlanURL:
-                                type: string
-                                minLength: 1
-                required:
-                  - communityNumber
-                  - communityStartingAtPrice
-                  - careTypes
-                x-examples:
-                  example-1:
-                    communityNumber: '10844'
-                    communityStartingAtPrice: '7595.00'
-                    careTypes:
-                      - careType: Independent Living
-                        roomTypes:
-                          - roomType: Studio Deluxe
-                            unitSquareFootageRange: 420-505
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '50'
-                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
-                          - roomType: One Bedroom
-                            unitSquareFootageRnage: 595-820
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '62'
-                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
-                          - roomType: Two Bedroom
-                            unitSquareFootageRange: 950-1095
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '19'
-                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
-                      - careType: Assisted Living
-                        roomTypes:
-                          - roomType: Studio
-                            unitSquareFootageRange: 420-505
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '50'
-                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
-                          - roomType: One Bedroom
-                            unitSquareFootageRange: 595-820
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '62'
-                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
-                          - roomType: Two Bedroom
-                            unitSquareFootageRange: 950-1095
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '19'
-                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
-                      - careType: Memory Care
-                        roomTypes:
-                          - roomType: Studio
-                            unitSquareFootageRange: '400'
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '6'
-                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
-                          - roomType: Shared Suite
-                            unitSquareFootageRange: 544-801
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '8'
-                            floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
-              examples:
-                example-1:
-                  value:
-                    communityNumber: '10844'
-                    communityStartingAtPrice: '7595.00'
-                    careTypes:
-                      - careType: Independent Living
-                        roomTypes:
-                          - roomType: Studio Deluxe
-                            unitSquareFootageRange: 420-505
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '50'
-                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
-                          - roomType: One Bedroom
-                            unitSquareFootageRnage: 595-820
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '62'
-                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
-                          - roomType: Two Bedroom
-                            unitSquareFootageRange: 950-1095
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '19'
-                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
-                      - careType: Assisted Living
-                        roomTypes:
-                          - roomType: Studio
-                            unitSquareFootageRange: 420-505
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '50'
-                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
-                          - roomType: One Bedroom
-                            unitSquareFootageRange: 595-820
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '62'
-                            floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
-                          - roomType: Two Bedroom
-                            unitSquareFootageRange: 950-1095
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '19'
-                            floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
-                      - careType: Memory Care
-                        roomTypes:
-                          - roomType: Studio
-                            unitSquareFootageRange: '400'
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '6'
-                            floorPlanURL: 'http://floorplanurl.com/studio/20810'
-                          - roomType: Shared Suite
-                            unitSquareFootageRange: 544-801
-                            pricing:
-                              singlePrivateRate: '7595.00'
-                              semiPrivateRate: '7595.00'
-                              respiteRate: '299.00'
-                              startingAtPrice: '7595.00'
-                            vacantRoomCount: '8'
-                            floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
-      operationId: get-v1-community-communityId-apartment
-      description: Get community apartment data.
-      parameters: []
-      security: []
+        - ASl 2.0
   '/ASL2/v1/community/{communityNumber}/features':
     parameters:
       - name: communityNumber
@@ -946,8 +946,6 @@ paths:
         description: The community number.
     get:
       summary: 'ASL2/v1/community/{communityNumber}/features'
-      tags:
-        - Apartment
       responses:
         '201':
           description: Created
@@ -1052,9 +1050,11 @@ paths:
                   - communityNumber
                   - features
       operationId: get-v1-community-communityId-apartment
-      description: Get community apartment data.
+      description: Get community features
       parameters: []
       security: []
+      tags:
+        - ASL 2.0
   '/ASL2/v1/community/{communityNumber}/amenities':
     parameters:
       - name: communityNumber
@@ -1065,8 +1065,6 @@ paths:
         description: The community number.
     get:
       summary: 'ASL2/v1/community/{communityNumber}/amenities'
-      tags:
-        - Apartment
       responses:
         '201':
           description: Created
@@ -1170,9 +1168,11 @@ paths:
                       - id: '???'
                         label: Indoor Swimming Pool
       operationId: get-v1-community-communityId-apartment
-      description: Get community apartment data.
+      description: Get community amenities
       parameters: []
       security: []
+      tags:
+        - ASL 2.0
   '/ASL2/v1/community/{communityNumber}/services':
     parameters:
       - name: communityNumber
@@ -1183,8 +1183,6 @@ paths:
         description: The community number.
     get:
       summary: 'ASL2/v1/community/{communityNumber}/services'
-      tags:
-        - Apartment
       responses:
         '201':
           description: Created
@@ -1288,9 +1286,11 @@ paths:
                       - id: '???'
                         label: Vegetarian Meals
       operationId: get-v1-community-communityId-apartment
-      description: Get community apartment data.
+      description: Get community services
       parameters: []
       security: []
+      tags:
+        - ASL 2.0
   '/ASL2/v1/community/{communityNumber}/digitalassets':
     parameters:
       - name: communityNumber
@@ -1301,8 +1301,6 @@ paths:
         description: The community number.
     get:
       summary: 'ASL2/v1/community/{communityNumber}/digitalassets'
-      tags:
-        - Apartment
       responses:
         '201':
           description: Created
@@ -1465,9 +1463,11 @@ paths:
                   - digitalAssets
           description: ''
       operationId: get-v1-community-communityId-apartment
-      description: Get community apartment data.
+      description: Get community digital asset.
       parameters: []
       security: []
+      tags:
+        - ASL 2.0
   '/Coterie//v1/community/{communityNumber}/apartments':
     parameters:
       - name: communityNumber
