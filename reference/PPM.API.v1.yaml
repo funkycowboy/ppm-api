@@ -29,71 +29,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                properties:
-                  communityNumber:
-                    type: string
-                    minLength: 1
-                  communityStartingAtPrice:
-                    type: string
-                    minLength: 1
-                  careTypes:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - careType
-                      properties:
-                        careType:
-                          type: string
-                          minLength: 1
-                        roomTypes:
-                          type: array
-                          uniqueItems: true
-                          minItems: 1
-                          items:
-                            required:
-                              - roomType
-                              - unitSquareFootageRange
-                              - vacantRoomCount
-                              - floorPlanURL
-                            properties:
-                              roomType:
-                                type: string
-                                minLength: 1
-                              unitSquareFootageRange:
-                                type: string
-                                minLength: 1
-                              pricing:
-                                type: object
-                                properties:
-                                  singlePrivateRate:
-                                    type: string
-                                    minLength: 1
-                                  semiPrivateRate:
-                                    type: string
-                                    minLength: 1
-                                  respiteRate:
-                                    type: string
-                                    minLength: 1
-                                  startingAtPrice:
-                                    type: string
-                                    minLength: 1
-                                required:
-                                  - singlePrivateRate
-                                  - semiPrivateRate
-                                  - respiteRate
-                                  - startingAtPrice
-                              vacantRoomCount:
-                                type: string
-                                minLength: 1
-                              floorPlanURL:
-                                type: string
-                                minLength: 1
-                required:
-                  - communityNumber
-                  - communityStartingAtPrice
-                  - careTypes
                 x-examples:
                   example-1:
                     communityNumber: '10844'
@@ -177,6 +112,75 @@ paths:
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '8'
                             floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  communityStartingAtPrice:
+                    type: string
+                    minLength: 1
+                  careTypes:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        careType:
+                          type: string
+                          minLength: 1
+                        roomTypes:
+                          type: array
+                          uniqueItems: true
+                          minItems: 1
+                          items:
+                            type: object
+                            properties:
+                              roomType:
+                                type: string
+                                minLength: 1
+                              unitSquareFootageRange:
+                                type: string
+                                minLength: 1
+                              bathroomCount:
+                                type: integer
+                              vacantRoomCount:
+                                type: string
+                                minLength: 1
+                              floorPlanURL:
+                                type: string
+                                minLength: 1
+                              pricing:
+                                type: object
+                                properties:
+                                  singlePrivateRate:
+                                    type: string
+                                    minLength: 1
+                                  semiPrivateRate:
+                                    type: string
+                                    minLength: 1
+                                  respiteRate:
+                                    type: string
+                                    minLength: 1
+                                  startingAtPrice:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                  - singlePrivateRate
+                                  - semiPrivateRate
+                                  - respiteRate
+                                  - startingAtPrice
+                            required:
+                              - roomType
+                              - unitSquareFootageRange
+                              - vacantRoomCount
+                              - floorPlanURL
+                      required:
+                        - careType
+                required:
+                  - communityNumber
+                  - communityStartingAtPrice
+                  - careTypes
               examples:
                 example-1:
                   value:
@@ -193,6 +197,7 @@ paths:
                               respiteRate: '299.00'
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '50'
+                            bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/studio/20810'
                           - roomType: One Bedroom
                             unitSquareFootageRnage: 595-820
@@ -202,6 +207,7 @@ paths:
                               respiteRate: '299.00'
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '62'
+                            bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
                           - roomType: Two Bedroom
                             unitSquareFootageRange: 950-1095
@@ -211,6 +217,7 @@ paths:
                               respiteRate: '299.00'
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '19'
+                            bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
                       - careType: Assisted Living
                         roomTypes:
@@ -222,6 +229,7 @@ paths:
                               respiteRate: '299.00'
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '50'
+                            bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/studio/20810'
                           - roomType: One Bedroom
                             unitSquareFootageRange: 595-820
@@ -231,6 +239,7 @@ paths:
                               respiteRate: '299.00'
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '62'
+                            bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
                           - roomType: Two Bedroom
                             unitSquareFootageRange: 950-1095
@@ -240,6 +249,7 @@ paths:
                               respiteRate: '299.00'
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '19'
+                            bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
                       - careType: Memory Care
                         roomTypes:
@@ -251,6 +261,7 @@ paths:
                               respiteRate: '299.00'
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '6'
+                            bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/studio/20810'
                           - roomType: Shared Suite
                             unitSquareFootageRange: 544-801
@@ -260,6 +271,7 @@ paths:
                               respiteRate: '299.00'
                               startingAtPrice: '7595.00'
                             vacantRoomCount: '8'
+                            bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
       operationId: get-v1-community-communityId-apartment
       description: Get community pricing by care type
@@ -626,6 +638,7 @@ paths:
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '50'
+                              bathroomCount: 1
                               floorPlanURL: 'http://floorplanurl.com/studio/20810'
                             - roomType: One Bedroom
                               unitSquareFootageRnage: 595-820
@@ -634,6 +647,7 @@ paths:
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '62'
+                              bathroomCount: 1
                               floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
                             - roomType: Two Bedroom
                               unitSquareFootageRange: 950-1095
@@ -642,6 +656,7 @@ paths:
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '19'
+                              bathroomCount: 1
                               floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
                         - careType: Memory Care
                           roomTypes:
@@ -652,6 +667,7 @@ paths:
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '6'
+                              bathroomCount: 1
                               floorPlanURL: 'http://floorplanurl.com/studio/20810'
                             - roomType: Shared Suite
                               unitSquareFootageRange: 544-801
@@ -660,6 +676,7 @@ paths:
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '8'
+                              bathroomCount: 1
                               floorPlanURL: 'http://floorplanurl.com/one-bedroom/shared-suite/20810'
         '':
           content:
