@@ -336,181 +336,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                properties:
-                  communityNumber:
-                    type: string
-                    minLength: 1
-                  communityStartingAtPrice:
-                    type: string
-                    minLength: 1
-                  digitalAssets:
-                    type: object
-                    properties:
-                      image:
-                        type: array
-                        uniqueItems: true
-                        minItems: 1
-                        items:
-                          required:
-                            - name
-                            - caption
-                            - altText
-                          properties:
-                            name:
-                              type: string
-                              minLength: 1
-                            caption:
-                              type: string
-                              minLength: 1
-                            altText:
-                              type: string
-                              minLength: 1
-                            urls:
-                              type: object
-                              properties:
-                                thumbnail:
-                                  type: string
-                                  minLength: 1
-                                16x9:
-                                  type: string
-                                  minLength: 1
-                                4x3:
-                                  type: string
-                                  minLength: 1
-                                small:
-                                  type: string
-                                  minLength: 1
-                                large:
-                                  type: string
-                                  minLength: 1
-                              required:
-                                - thumbnail
-                                - 16x9
-                                - 4x3
-                                - small
-                                - large
-                    required:
-                      - image
-                  features:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - id
-                        - label
-                        - iconUrl
-                      properties:
-                        id:
-                          type: string
-                          minLength: 1
-                        label:
-                          type: string
-                          minLength: 1
-                        iconUrl:
-                          type: string
-                          minLength: 1
-                  services:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - id
-                        - label
-                        - iconUrl
-                      properties:
-                        id:
-                          type: string
-                          minLength: 1
-                        label:
-                          type: string
-                          minLength: 1
-                        iconUrl:
-                          type: string
-                          minLength: 1
-                  amenities:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - id
-                        - label
-                        - iconUrl
-                      properties:
-                        id:
-                          type: string
-                          minLength: 1
-                        label:
-                          type: string
-                          minLength: 1
-                        iconUrl:
-                          type: string
-                          minLength: 1
-                  pricing:
-                    type: object
-                    properties:
-                      careTypes:
-                        type: array
-                        uniqueItems: true
-                        minItems: 1
-                        items:
-                          required:
-                            - careType
-                          properties:
-                            careType:
-                              type: string
-                              minLength: 1
-                            roomTypes:
-                              type: array
-                              uniqueItems: true
-                              minItems: 1
-                              items:
-                                required:
-                                  - roomType
-                                  - unitSquareFootageRange
-                                  - vacantRoomCount
-                                  - floorPlanURL
-                                properties:
-                                  roomType:
-                                    type: string
-                                    minLength: 1
-                                  unitSquareFootageRange:
-                                    type: string
-                                    minLength: 1
-                                  pricing:
-                                    type: object
-                                    properties:
-                                      rentalRate:
-                                        type: string
-                                        minLength: 1
-                                      respiteRate:
-                                        type: string
-                                        minLength: 1
-                                      startingAtPrice:
-                                        type: string
-                                        minLength: 1
-                                    required:
-                                      - rentalRate
-                                      - respiteRate
-                                      - startingAtPrice
-                                  vacantRoomCount:
-                                    type: string
-                                    minLength: 1
-                                  floorPlanURL:
-                                    type: string
-                                    minLength: 1
-                    required:
-                      - careTypes
-                required:
-                  - communityNumber
-                  - communityStartingAtPrice
-                  - digitalAssets
-                  - features
-                  - services
-                  - amenities
-                  - pricing
                 x-examples:
                   example-1:
                     communityNumber: '10844'
@@ -611,6 +436,191 @@ paths:
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '8'
                               floorPlanURL: 'http://floorplanurl.com/one-bedroom/shared-suite/20810'
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  communityStartingAtPrice:
+                    type: string
+                    minLength: 1
+                  digitalAssets:
+                    type: object
+                    required:
+                      - image
+                    properties:
+                      image:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          type: object
+                          properties:
+                            name:
+                              type: string
+                              minLength: 1
+                            caption:
+                              type: string
+                              minLength: 1
+                            altText:
+                              type: string
+                              minLength: 1
+                            urls:
+                              type: object
+                              properties:
+                                thumbnail:
+                                  type: string
+                                  minLength: 1
+                                16x9:
+                                  type: string
+                                  minLength: 1
+                                4x3:
+                                  type: string
+                                  minLength: 1
+                                small:
+                                  type: string
+                                  minLength: 1
+                                large:
+                                  type: string
+                                  minLength: 1
+                              required:
+                                - thumbnail
+                                - 16x9
+                                - 4x3
+                                - small
+                                - large
+                          required:
+                            - name
+                            - caption
+                            - altText
+                  features:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                          minLength: 1
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                  services:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                          minLength: 1
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                  amenities:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          minLength: 1
+                        label:
+                          type: string
+                          minLength: 1
+                        iconUrl:
+                          type: string
+                          minLength: 1
+                      required:
+                        - id
+                        - label
+                        - iconUrl
+                  pricing:
+                    type: object
+                    required:
+                      - careTypes
+                    properties:
+                      careTypes:
+                        type: array
+                        uniqueItems: true
+                        minItems: 1
+                        items:
+                          type: object
+                          properties:
+                            careType:
+                              type: string
+                              minLength: 1
+                            roomTypes:
+                              type: array
+                              uniqueItems: true
+                              minItems: 1
+                              items:
+                                type: object
+                                properties:
+                                  roomType:
+                                    type: string
+                                    minLength: 1
+                                  unitSquareFootageRange:
+                                    type: string
+                                    minLength: 1
+                                  pricing:
+                                    type: object
+                                    properties:
+                                      rentalRate:
+                                        type: string
+                                        minLength: 1
+                                      respiteRate:
+                                        type: string
+                                        minLength: 1
+                                      startingAtPrice:
+                                        type: string
+                                        minLength: 1
+                                    required:
+                                      - rentalRate
+                                      - respiteRate
+                                      - startingAtPrice
+                                  vacantRoomCount:
+                                    type: string
+                                    minLength: 1
+                                  floorPlanURL:
+                                    type: string
+                                    minLength: 1
+                                  bathroomCount:
+                                    type: integer
+                                  '':
+                                    type: string
+                                required:
+                                  - roomType
+                                  - unitSquareFootageRange
+                                  - vacantRoomCount
+                                  - floorPlanURL
+                          required:
+                            - careType
+                required:
+                  - communityNumber
+                  - communityStartingAtPrice
+                  - digitalAssets
+                  - features
+                  - services
+                  - amenities
+                  - pricing
               examples:
                 example-1:
                   value:
