@@ -29,94 +29,6 @@ paths:
               schema:
                 description: ''
                 type: object
-                properties:
-                  communityNumber:
-                    type: string
-                    minLength: 1
-                  communityStartingAtPrice:
-                    type: string
-                    minLength: 1
-                  communityAddess:
-                    type: object
-                    properties:
-                      address1:
-                        type: string
-                      address2:
-                        type: string
-                      city:
-                        type: string
-                      state:
-                        type: string
-                      zipCode:
-                        type: string
-                    required:
-                      - address1
-                      - address2
-                      - city
-                      - state
-                      - zipCode
-                  careTypes:
-                    type: array
-                    uniqueItems: true
-                    minItems: 1
-                    items:
-                      required:
-                        - careType
-                      properties:
-                        careType:
-                          type: string
-                          minLength: 1
-                        roomTypes:
-                          type: array
-                          uniqueItems: true
-                          minItems: 1
-                          items:
-                            required:
-                              - roomType
-                              - unitSquareFootageRange
-                              - vacantRoomCount
-                              - bathroomCount
-                              - floorPlanURL
-                            properties:
-                              roomType:
-                                type: string
-                                minLength: 1
-                              unitSquareFootageRange:
-                                type: string
-                                minLength: 1
-                              pricing:
-                                type: object
-                                properties:
-                                  singlePrivateRate:
-                                    type: string
-                                    minLength: 1
-                                  semiPrivateRate:
-                                    type: string
-                                    minLength: 1
-                                  respiteRate:
-                                    type: string
-                                    minLength: 1
-                                  startingAtPrice:
-                                    type: string
-                                    minLength: 1
-                                required:
-                                  - singlePrivateRate
-                                  - semiPrivateRate
-                                  - respiteRate
-                                  - startingAtPrice
-                              vacantRoomCount:
-                                type: string
-                                minLength: 1
-                              bathroomCount:
-                                type: number
-                              floorPlanURL:
-                                type: string
-                                minLength: 1
-                required:
-                  - communityNumber
-                  - communityStartingAtPrice
-                  - communityAddess
-                  - careTypes
                 x-examples:
                   example-1:
                     communityNumber: '10844'
@@ -214,6 +126,96 @@ paths:
                             vacantRoomCount: '8'
                             bathroomCount: 1
                             floorPlanURL: 'http://floorplanurl.com/shared-suite/20810'
+                properties:
+                  communityNumber:
+                    type: string
+                    minLength: 1
+                  communityStartingAtPrice:
+                    type: string
+                    minLength: 1
+                  communityAddress:
+                    type: object
+                    required:
+                      - address1
+                      - address2
+                      - city
+                      - state
+                      - zipCode
+                    properties:
+                      address1:
+                        type: string
+                      address2:
+                        type: string
+                      city:
+                        type: string
+                      state:
+                        type: string
+                      zipCode:
+                        type: string
+                  careTypes:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        careType:
+                          type: string
+                          minLength: 1
+                        roomTypes:
+                          type: array
+                          uniqueItems: true
+                          minItems: 1
+                          items:
+                            type: object
+                            properties:
+                              roomType:
+                                type: string
+                                minLength: 1
+                              unitSquareFootageRange:
+                                type: string
+                                minLength: 1
+                              pricing:
+                                type: object
+                                properties:
+                                  singlePrivateRate:
+                                    type: string
+                                    minLength: 1
+                                  semiPrivateRate:
+                                    type: string
+                                    minLength: 1
+                                  respiteRate:
+                                    type: string
+                                    minLength: 1
+                                  startingAtPrice:
+                                    type: string
+                                    minLength: 1
+                                required:
+                                  - singlePrivateRate
+                                  - semiPrivateRate
+                                  - respiteRate
+                                  - startingAtPrice
+                              vacantRoomCount:
+                                type: string
+                                minLength: 1
+                              bathroomCount:
+                                type: number
+                              floorPlanURL:
+                                type: string
+                                minLength: 1
+                            required:
+                              - roomType
+                              - unitSquareFootageRange
+                              - vacantRoomCount
+                              - bathroomCount
+                              - floorPlanURL
+                      required:
+                        - careType
+                required:
+                  - communityNumber
+                  - communityStartingAtPrice
+                  - communityAddress
+                  - careTypes
               examples:
                 example-1:
                   value:
@@ -443,6 +445,19 @@ paths:
                   communityStartingAtPrice:
                     type: string
                     minLength: 1
+                  communityAddress:
+                    type: object
+                    properties:
+                      address1:
+                        type: string
+                      address2:
+                        type: string
+                      city:
+                        type: string
+                      state:
+                        type: string
+                      zipCode:
+                        type: string
                   digitalAssets:
                     type: object
                     required:
@@ -492,6 +507,8 @@ paths:
                             - name
                             - caption
                             - altText
+                      '':
+                        type: string
                   features:
                     type: array
                     uniqueItems: true
