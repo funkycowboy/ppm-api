@@ -133,25 +133,6 @@ paths:
                   communityStartingAtPrice:
                     type: string
                     minLength: 1
-                  communityAddress:
-                    type: object
-                    required:
-                      - address1
-                      - address2
-                      - city
-                      - state
-                      - zipCode
-                    properties:
-                      address1:
-                        type: string
-                      address2:
-                        type: string
-                      city:
-                        type: string
-                      state:
-                        type: string
-                      zipCode:
-                        type: string
                   careTypes:
                     type: array
                     uniqueItems: true
@@ -214,7 +195,6 @@ paths:
                 required:
                   - communityNumber
                   - communityStartingAtPrice
-                  - communityAddress
                   - careTypes
               examples:
                 example-1:
