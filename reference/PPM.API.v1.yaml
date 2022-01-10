@@ -712,6 +712,7 @@ paths:
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '50'
+                              bathroomCount: '1'
                               floorPlanURL: 'http://floorplanurl.com/studio/20810'
                             - roomType: One Bedroom
                               unitSquareFootageRnage: 595-820
@@ -721,6 +722,7 @@ paths:
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '62'
+                              bathroomCount: '1'
                               floorPlanURL: 'http://floorplanurl.com/one-bedroom/20810'
                             - roomType: Two Bedroom
                               unitSquareFootageRange: 950-1095
@@ -730,13 +732,15 @@ paths:
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '19'
+                              bathroomCount: '1'
                               floorPlanURL: 'http://floorplanurl.com/two-bedroom/20810'
                         - careType: Assisted Living
                           roomTypes:
                             - roomType: Studio
                               unitSquareFootageRange: 420-505
                               pricing:
-                                rentalRate: '7595.00'
+                                singlePrivateRate: '7595.00'
+                                semiPrivateRate: '7595.00'
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '50'
@@ -745,7 +749,8 @@ paths:
                             - roomType: One Bedroom
                               unitSquareFootageRnage: 595-820
                               pricing:
-                                rentalRate: '7595.00'
+                                singlePrivateRate: '7595.00'
+                                semiPrivateRate: '7595.00'
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '62'
@@ -754,7 +759,8 @@ paths:
                             - roomType: Two Bedroom
                               unitSquareFootageRange: 950-1095
                               pricing:
-                                rentalRate: '7595.00'
+                                singlePrivateRate: '7595.00'
+                                semiPrivateRate: '7595.00'
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '19'
@@ -765,7 +771,8 @@ paths:
                             - roomType: Studio
                               unitSquareFootageRange: '400'
                               pricing:
-                                rentalRate: '7595.00'
+                                singlePrivateRate: '7595.00'
+                                semiPrivateRate: '7595.00'
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '6'
@@ -774,7 +781,8 @@ paths:
                             - roomType: Shared Suite
                               unitSquareFootageRange: 544-801
                               pricing:
-                                rentalRate: '7595.00'
+                                singlePrivateRate: '7595.00'
+                                semiPrivateRate: '7595.00'
                                 respiteRate: '299.00'
                                 startingAtPrice: '7595.00'
                               vacantRoomCount: '8'
