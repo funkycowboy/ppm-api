@@ -222,11 +222,11 @@ paths:
                     communityNumber: '10844'
                     communityStartingAtPrice: '7595.00'
                     communityAddess:
-                      address1: ''
-                      address2: ''
-                      city: ''
-                      state: ''
-                      zipCode: ''
+                      address1: 300 East Market Street
+                      address2: Suite 100
+                      city: Louisville
+                      state: KY
+                      zipCode: '40202'
                     careTypes:
                       - careType: Independent Living
                         roomTypes:
