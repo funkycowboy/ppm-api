@@ -320,6 +320,7 @@ paths:
       security: []
       tags:
         - ASL 2.0
+      x-internal: false
   '/ASL2/v1/community/{communityNumber}':
     parameters:
       - name: communityNumber
