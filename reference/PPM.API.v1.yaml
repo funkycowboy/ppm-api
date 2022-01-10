@@ -643,9 +643,15 @@ paths:
                 example-1:
                   value:
                     communityNumber: '10844'
+                    communityAddess:
+                      address1: 300 East Market Street
+                      address2: Suite 100
+                      city: Louisville
+                      state: KY
+                      zipCode: '40202'
                     digitalAssets:
                       image:
-                        - name: tets
+                        - name: test
                           caption: Lorem ipsum dolor sit am
                           altText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut'
                           urls:
